@@ -39,6 +39,7 @@ AFTER_REL = "2"
 # suite but will make a big mess)
 KEEP_RESULTS = False
 
+
 # Exceptions used by the test suite
 class MissingRpminspect(Exception):
     pass
@@ -96,12 +97,12 @@ class RequiresRpminspect(unittest.TestCase):
         # give that a try here but default to a string conversion.
         try:
             o = json.dumps(json.loads(self.out), sort_keys=True, indent=4)
-        except:
+        except Exception:
             o = str(self.out, "utf-8")
 
         try:
             e = json.dumps(json.loads(self.err), sort_keys=True, indent=4)
-        except:
+        except Exception:
             e = str(self.err, "utf-8")
 
         print("\n\ninspection=%s\n" % self.inspection)
